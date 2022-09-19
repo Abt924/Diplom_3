@@ -3,6 +3,8 @@ import org.junit.Before;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import stellar.model.WebDriverGenerator;
 
 public class BaseUiTest {
 
@@ -11,13 +13,16 @@ public class BaseUiTest {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver.exe");
-        driver = new ChromeDriver();
+//        driver = WebDriverGenerator.yandexDriver();
+        driver = WebDriverGenerator.chromeDriver();
+
         jse = (JavascriptExecutor) driver;
+
     }
 
     @After
     public void tearDown() {
         driver.quit();
     }
+
 }
