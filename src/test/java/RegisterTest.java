@@ -1,10 +1,20 @@
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.openqa.selenium.WebDriver;
 import stellar.model.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+
+@RunWith(Parameterized.class)
 public class RegisterTest extends BaseUiTest {
+
+    public RegisterTest(WebDriver driver, String browser) {
+        super(driver, browser);
+    }
+
 
     @Test
     public void successfulRegistration(){
