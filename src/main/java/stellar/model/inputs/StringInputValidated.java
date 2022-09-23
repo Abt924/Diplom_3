@@ -1,21 +1,21 @@
-package stellar.model;
+package stellar.model.inputs;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import stellar.model.inputs.StringInput;
 
 import java.util.List;
 
-public class StringInputValidated extends StringInput{
+public class StringInputValidated extends StringInput {
 
     private final By selectorErrorMessage;
     protected WebElement errorMessage;
     private int countErrorMessage;
 
 
-    protected final String errorClass = "input__status_error";
-    private final String visibleClass = "Input_Visible";
+    protected final String errorClass = "input_status_error";
 
 
 
@@ -48,6 +48,7 @@ public class StringInputValidated extends StringInput{
     }
 
     public boolean isErrorMessageDisplayed() {
+        errorMessage = driver.findElement(selectorErrorMessage);
         return errorMessage.isDisplayed();
     }
 

@@ -1,6 +1,7 @@
-package stellar.model;
+package stellar.model.inputs;
 
 import org.openqa.selenium.*;
+import stellar.model.pages.DriveredPage;
 
 import java.util.List;
 
@@ -38,15 +39,17 @@ public class StringInput extends DriveredPage {
 
         List<WebElement> inputs = driver.findElements(selectorInput);
         countInput = inputs.size();
-//        System.out.println(selectorInput.toString() + " found "  + countInput);
         if (countInput == 1) input = inputs.get(0);
         else input = null;
-//        System.out.println(input.toString() + " pass found "  );
-//        input.sendKeys("9876543221");
         if (input != null) {
             status = input.findElement(selectorStatus);
             filling = status.findElement(selectorFilling);
         }
+    }
+
+    public void refreshStatus(){
+        status = input.findElement(selectorStatus);
+        filling = status.findElement(selectorFilling);
     }
 
     // наличие на странице и единственность
