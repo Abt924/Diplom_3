@@ -13,7 +13,8 @@ public class User {
         this.email = email;
         this.password = password;
     }
-    public Credentials getCredentials(){
+
+    public Credentials getCredentials() {
         return new Credentials(email, password);
     }
 }

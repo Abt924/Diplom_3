@@ -1,15 +1,13 @@
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
 import stellar.model.pages.Constructor;
 import stellar.model.pages.StellarHomePage;
 
-import static org.junit.Assert.*;
-public class ConstructorTest extends BaseUiTest{
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
+public class ConstructorTest extends BaseUiTest {
     private Constructor constructor;
 
     @Before
@@ -17,12 +15,12 @@ public class ConstructorTest extends BaseUiTest{
         super.setUp();
         new StellarHomePage(driver, jse)
                 .open();
-        constructor = new Constructor(driver,jse);
+        constructor = new Constructor(driver, jse);
     }
 
     @Test
     @DisplayName("check Buns selected by default")
-    public void checkBunsSelectedByDefault(){
+    public void checkBunsSelectedByDefault() {
         assertTrue("Buns should be selected by default", constructor.isBunsTabSelected());
         assertFalse("Sauces should Not be selected by default", constructor.isSaucesTabSelected());
         assertFalse("Fillings should Not be selected by default", constructor.isFillingsTabSelected());
@@ -30,7 +28,7 @@ public class ConstructorTest extends BaseUiTest{
 
     @Test
     @DisplayName("check Fillings Select")
-    public void checkFillingSelect(){
+    public void checkFillingSelect() {
         constructor.clickFillings();
         assertFalse("Buns should be selected by default", constructor.isBunsTabSelected());
         assertFalse("Sauces should Not be selected by default", constructor.isSaucesTabSelected());
@@ -39,7 +37,7 @@ public class ConstructorTest extends BaseUiTest{
 
     @Test
     @DisplayName("check Sauces Select")
-    public void checkSaucesSelect(){
+    public void checkSaucesSelect() {
         constructor.clickSauces();
         assertFalse("Buns should be selected by default", constructor.isBunsTabSelected());
         assertTrue("Sauces should Not be selected by default", constructor.isSaucesTabSelected());
@@ -48,12 +46,11 @@ public class ConstructorTest extends BaseUiTest{
 
     @Test
     @DisplayName("check Bun Select")
-    public void checkBunSelect(){
+    public void checkBunSelect() {
         constructor.clickFillings();
         constructor.clickBuns();
         assertTrue("Buns should be selected by default", constructor.isBunsTabSelected());
         assertFalse("Sauces should Not be selected by default", constructor.isSaucesTabSelected());
         assertFalse("Fillings should Not be selected by default", constructor.isFillingsTabSelected());
     }
-
 }

@@ -3,14 +3,15 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
 import stellar.model.UserGenerator;
-import stellar.model.pages.*;
+import stellar.model.pages.ForgotPasswordPage;
+import stellar.model.pages.RegisterPage;
+import stellar.model.pages.ResetPasswordPage;
+import stellar.model.pages.StellarHomePage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-
 public class LoginTest extends BaseUiTest {
-
 
     @Before
     public void setUp() {
@@ -82,7 +83,6 @@ public class LoginTest extends BaseUiTest {
 
         assertTrue("Place an Order Button should enable on Authorized Home page", stellarHomePage.isAuthorizedPage());
         assertEquals("HomePage url expected", stellarHomePage.getUrl(), driver.getCurrentUrl());
-
     }
 
     @Test

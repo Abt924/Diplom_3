@@ -7,18 +7,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import stellar.model.pojo.User;
 import stellar.model.inputs.EmailInput;
 import stellar.model.inputs.NameInput;
 import stellar.model.inputs.PasswordInput;
+import stellar.model.pojo.User;
 
 public class RegisterPage extends DriveredPage {
     private final String PATH = "/register";
-
     private final By selectorRegisterPage = By.xpath(".//h2[text()='Регистрация']");
     private final By selectorRegisterButton = By.xpath(".//button[text()='Зарегистрироваться']");
     private final By selectorLoginLink = By.xpath(".//a[@href='/login']");
-
     private NameInput nameInput;
     private EmailInput emailInput;
     public PasswordInput passwordInput;
@@ -66,7 +64,7 @@ public class RegisterPage extends DriveredPage {
         return new LoginPage(driver, jse);
     }
 
-    @Step("register user {user}")
+    @Step("ui register user {user}")
     public LoginPage registerAs(User user) {
         open();
         fillName(user.getName());
@@ -75,7 +73,7 @@ public class RegisterPage extends DriveredPage {
         return pushRegisterButton();
     }
 
-
+    @Step("ui register user {user}")
     public RegisterPage registerAsExpectingFailure(User user) {
         open();
         fillName(user.getName());
@@ -83,7 +81,8 @@ public class RegisterPage extends DriveredPage {
         fillPassword(user.getPassword());
         return pushRegisterExpectingFailure();
     }
-    //    @Step("puss Register button")
+
+    //    @Step("push Register button")
     public RegisterPage pushRegisterExpectingFailure() {
         driver.findElement(selectorRegisterButton).click();
         return this;
@@ -94,12 +93,13 @@ public class RegisterPage extends DriveredPage {
         return element != null;
     }
 
-    public String getUrl() {return URL + PATH;}
+    public String getUrl() {
+        return URL + PATH;
+    }
 
     @Step("follow to Login page")
     public LoginPage followToLoginPage() {
         driver.findElement(selectorLoginLink).click();
         return new LoginPage(driver, jse);
     }
-
 }

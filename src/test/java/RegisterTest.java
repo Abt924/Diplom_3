@@ -8,7 +8,6 @@ import stellar.model.pages.RegisterPage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-
 public class RegisterTest extends BaseUiTest {
 
     @Test
@@ -36,14 +35,11 @@ public class RegisterTest extends BaseUiTest {
                 .registerAsExpectingFailure(user)
                 .waitRegisterPage();
 
-
         assertTrue("transition to the RegisterPage expected", registerPage.isRegisterPage());
         assertEquals("RegisterPage url expected", registerPage.getUrl(), driver.getCurrentUrl());
         assertTrue("error message expected, course pwd is required", registerPage.passwordInput.isError());
         assertTrue("Error mess should be displayed", registerPage.passwordInput.isErrorMessageDisplayed());
-        assertEquals("RegisterPage url expected",
-                "Пароль быть обязан",
-                registerPage.passwordInput.getErrorMessageText());
+        assertEquals("RegisterPage url expected", "Пароль быть обязан", registerPage.passwordInput.getErrorMessageText());
     }
 
     @Test
@@ -56,16 +52,10 @@ public class RegisterTest extends BaseUiTest {
                 .open()
                 .registerAsExpectingFailure(user);
 
-
         assertTrue("transition to the RegisterPage expected", registerPage.isRegisterPage());
         assertEquals("RegisterPage url expected", registerPage.getUrl(), driver.getCurrentUrl());
-
         assertTrue("Short Password error expected", registerPage.passwordInput.isError());
         assertTrue("Short Password error mess should displayed", registerPage.passwordInput.isErrorMessageDisplayed());
-        assertEquals("Error message is not as expected",
-                "Некорректный пароль",
-                registerPage.passwordInput.getErrorMessageText());
+        assertEquals("Error message is not as expected", "Некорректный пароль", registerPage.passwordInput.getErrorMessageText());
     }
-
-
 }

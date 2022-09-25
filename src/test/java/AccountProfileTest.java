@@ -2,32 +2,26 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import stellar.model.*;
+import stellar.model.UserGenerator;
 import stellar.model.pages.LoginPage;
 import stellar.model.pages.ProfilePage;
-import stellar.model.pages.RegisterPage;
 import stellar.model.pages.StellarHomePage;
-import stellar.model.pojo.User;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-
-public class AccountProfileTest extends BaseUiTest{
+public class AccountProfileTest extends BaseUiTest {
     private StellarHomePage homePage;
     private ProfilePage profilePage;
     private LoginPage loginPage;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         super.setUp();
         user = UserGenerator.createRandom();
         userCreated = userClient.createUser(user);
 
-        homePage = new LoginPage(driver,jse)
+        homePage = new LoginPage(driver, jse)
                 .open()
                 .waitLoginPage()
                 .fillCreds(user)
@@ -37,8 +31,7 @@ public class AccountProfileTest extends BaseUiTest{
 
     @Test
     @DisplayName("following to AccountProfile")
-    @Description("")
-    public void followingToAccountProfile(){
+    public void followingToAccountProfile() {
         profilePage = homePage
                 .pushAccountProfile()
                 .waitProfilePage();
@@ -47,11 +40,10 @@ public class AccountProfileTest extends BaseUiTest{
         assertEquals("AccountProfile page url expected", profilePage.getUrl(), driver.getCurrentUrl());
     }
 
-
     @Test
     @DisplayName("successful Logout")
     @Description("transition to the LoginPage expected")
-    public void successfulLogout(){
+    public void successfulLogout() {
         loginPage = homePage
                 .pushAccountProfile()
                 .waitProfilePage()
@@ -65,7 +57,7 @@ public class AccountProfileTest extends BaseUiTest{
     @Test
     @DisplayName("follow by Logo")
     @Description("transition to HomePage expected")
-    public void followByLogo(){
+    public void followByLogo() {
         homePage = homePage
                 .pushAccountProfile()
                 .waitProfilePage()
@@ -79,7 +71,7 @@ public class AccountProfileTest extends BaseUiTest{
     @Test
     @DisplayName("follow by click Constructor")
     @Description("transition to HomePage expected")
-    public void followToConstructor(){
+    public void followToConstructor() {
         homePage = homePage
                 .pushAccountProfile()
                 .waitProfilePage()
@@ -89,5 +81,4 @@ public class AccountProfileTest extends BaseUiTest{
         assertTrue("transition to the LoginPage expected", homePage.isAuthorizedPage());
         assertEquals("LoginPage url expected", homePage.getUrl(), driver.getCurrentUrl());
     }
-
 }

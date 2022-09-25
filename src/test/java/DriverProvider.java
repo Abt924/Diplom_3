@@ -17,6 +17,4 @@ public class DriverProvider {
         options.setBinary("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
         return new ChromeDriver(options);
     }
-
-
 }

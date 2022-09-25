@@ -11,7 +11,6 @@ public class StringInput extends DriveredPage {
     // Селектор для элемента status относительно input
     private final By selectorStatus = By.xpath("parent::div");
     // Селектор для элемента filling относительно input
-//    private final By selectorFilling = By.xpath("/parent::div/label");
     private final By selectorFilling = By.xpath("label");
 
     // элементы поля ввода
@@ -33,10 +32,8 @@ public class StringInput extends DriveredPage {
         init();
     }
 
-
     // поиск элементов на странице, подсчет, инициализация первым найденным.
     private void init() {
-
         List<WebElement> inputs = driver.findElements(selectorInput);
         countInput = inputs.size();
         if (countInput == 1) input = inputs.get(0);
@@ -47,7 +44,7 @@ public class StringInput extends DriveredPage {
         }
     }
 
-    public void refreshStatus(){
+    public void refreshStatus() {
         status = input.findElement(selectorStatus);
         filling = status.findElement(selectorFilling);
     }
@@ -60,7 +57,6 @@ public class StringInput extends DriveredPage {
     public boolean isInputSingleton() {
         return countInput == 1;
     }
-
 
     // действия
     public void clear() {
@@ -100,7 +96,6 @@ public class StringInput extends DriveredPage {
         return input.getAttribute("class");
     }
 
-
     //статусы поля ввода
     public boolean isFilled() {
         return input.getAttribute("class").contains(filledClass);
@@ -117,5 +112,4 @@ public class StringInput extends DriveredPage {
     public boolean isInputDisplayed() {
         return input.isDisplayed();
     }
-
 }

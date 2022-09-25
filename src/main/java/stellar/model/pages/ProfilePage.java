@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProfilePage extends DriveredPage {
     private final String PATH = "/account/profile";
-
     private final By selectorProfilePage = By.xpath(".//a[text()='Профиль']");
     private final By selectorLogoutButton = By.xpath(".//button[text()='Выход']");
     private final By selectorConstructor = By.xpath(".//p[text()='Конструктор']");
@@ -33,7 +32,6 @@ public class ProfilePage extends DriveredPage {
     @Step("logout")
     public LoginPage pushLogout() {
         driver.findElement(selectorLogoutButton).click();
-        ;
         return new LoginPage(driver, jse);
     }
 

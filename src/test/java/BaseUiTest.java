@@ -8,11 +8,8 @@ import stellar.model.pojo.User;
 import stellar.model.pojo.UserCreated;
 
 public class BaseUiTest {
-
     protected WebDriver driver;
     protected JavascriptExecutor jse;
-
-
     protected UserClient userClient;
     protected User user;
     protected UserCreated userCreated;
@@ -36,6 +33,4 @@ public class BaseUiTest {
             }
         }
     }
-
-
 }

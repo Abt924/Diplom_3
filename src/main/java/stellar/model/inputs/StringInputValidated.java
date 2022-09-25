@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import stellar.model.inputs.StringInput;
 
 import java.util.List;
 
@@ -13,11 +12,7 @@ public class StringInputValidated extends StringInput {
     private final By selectorErrorMessage;
     protected WebElement errorMessage;
     private int countErrorMessage;
-
-
     protected final String errorClass = "input_status_error";
-
-
 
     public StringInputValidated(WebDriver driver, JavascriptExecutor jse, By selectorInput, By selectorErrorMessage) {
         super(driver, jse, selectorInput);
@@ -35,6 +30,7 @@ public class StringInputValidated extends StringInput {
     public boolean isErrorMessageExist() {
         return countErrorMessage > 0;
     }
+
     public boolean isErrorMessageSingleton() {
         return countErrorMessage == 1;
     }
@@ -56,5 +52,4 @@ public class StringInputValidated extends StringInput {
     public boolean isValidate() {
         return !isError();
     }
-
 }
